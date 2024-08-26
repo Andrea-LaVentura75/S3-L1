@@ -2,16 +2,18 @@
   Scrivi una funzione per concatenare due stringhe ricevute come parametri, selezionando solamente i primi 2 caratteri della
   prima e gli ultimi 3 della seconda. Converti la stringa risultante in maiuscolo e mostrala con un console.log().
 */
-
+stringa1 = "ciao";
+stringa2 = "ciaoo";
+let nuovaStringa = "";
 const concatenazione = function (stringa1, stringa2) {
-  let primaLetteraSt1 = stringa1[0];
-  let secondaLetteraSt1 = stringa1[1];
-  let primaLetteraSt2 = stringa2[0];
-  let secondaLetteraSt2 = stringa2[1];
-  let terzaLetteraSt2 = stringa2[2];
-  console.log(`${primaLetteraSt1} ${secondaLetteraSt1} ${primaLetteraSt2}  `);
+  let primaLetterastr1 = stringa1.slice(0, 1);
+  let secondaLetterastr1 = stringa1.slice(1, 2);
+  let primaLetterastr2 = stringa2.slice(2, 3);
+  let secondaLetterastr2 = stringa2.slice(4, 5);
+  let terzaLetterastr2 = stringa2.slice(3, 4);
+  console.log(`${primaLetterastr1}${secondaLetterastr1}${primaLetterastr2}${secondaLetterastr2}${terzaLetterastr2}`);
 };
-concatenazione("ciao", "ciaoo");
+concatenazione(stringa1, stringa2);
 
 /* ESERCIZIO 2 (for)
   Scrivi una funzione che torni un array di 10 elementi; ognuno di essi deve essere un
@@ -30,14 +32,21 @@ console.log(contenitoreNumeriRandom);
   Scrivi una funzione per ricavare solamente i valori PARI da un array composto da soli valori numerici
 */
 let listaNumeri = [10, 25, 1, 47, 48, 2, 36, 9];
-let soloNumeriPari = listaNumeri.filter((num) => num % 2 === 0);
+let soloNumeriPari = [];
+const calcoloNumeriPari = function (listaNumeri) {
+  soloNumeriPari = listaNumeri.filter((num) => num % 2 === 0);
+};
+calcoloNumeriPari(listaNumeri);
 console.log(soloNumeriPari);
 /* ESERCIZIO 4 (forEach)
   Scrivi una funzione per sommare i numeri contenuti in un array
 */
 let numeriDaSommare = [1, 1, 1, 1, 20];
 let somma = 0;
-numeriDaSommare.forEach((num) => (somma += num));
+const calcoloSomma = function (numeriDaSommare) {
+  numeriDaSommare.forEach((num) => (somma += num));
+};
+calcoloSomma(numeriDaSommare);
 console.log(somma);
 
 /* ESERCIZIO 5 (reduce)
@@ -50,15 +59,22 @@ console.log(somma);
 */
 let numeri = [1, 3, 8, 10];
 let numIncremento = 1;
-let numeriIncrementati = numeri.map((num) => num + numIncremento);
+let numeriIncrementati = [];
+const incremento = function (numeri, numIncremento) {
+  numeriIncrementati = numeri.map((num) => num + numIncremento);
+};
+incremento(numeri, numIncremento);
 console.log(numeriIncrementati);
-
 /* ESERCIZIO 7 (map)
   Scrivi una funzione che, dato un array di stringhe, ritorni un nuovo array contenente le lunghezze delle rispettive stringhe dell'array di partenza
   es.: ["EPICODE", "is", "great"] => [7, 2, 5]
 */
 let stringa3 = ["ciao", "come", "stai"];
-const lunghezzaStringa = stringa3.map((parole) => parole.length);
+let lunghezzaStringa = [];
+const calcoloLunghezzaStringa = function (stringa3) {
+  lunghezzaStringa = stringa3.map((parole) => parole.length);
+};
+calcoloLunghezzaStringa(stringa3);
 console.log(lunghezzaStringa);
 /* ESERCIZIO 8 (forEach o for)
   Scrivi una funzione per creare un array contenente tutti i valori DISPARI da 1 a 99.
@@ -178,18 +194,20 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
-let filmPiuVechhio = [];
+let filmPiuVechhio = null;
 let anno = 3000;
-movies.forEach((movie) => {
-  movie.Year = parseInt(movie.Year);
+const oldfilm = function (array) {
+  array.forEach((movie) => {
+    movie.Year = parseInt(movie.Year);
 
-  if (movie.Year < anno) {
-    anno = movie.Year;
-    filmPiuVechhio = movie;
-  }
-});
+    if (movie.Year < anno) {
+      anno = movie.Year;
+      filmPiuVechhio = movie;
+    }
+  });
+};
+oldfilm(movies);
 console.log(filmPiuVechhio);
-
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
 */
@@ -201,6 +219,7 @@ numeroFilm();
 /* ESERCIZIO 11 (map)
   Scrivi una funzione per creare un array con solamente i titoli dei film contenuti nell'array fornito.
 */
+const allTitoli = function (movies) {};
 let soloTitoli = movies.map((movie) => {
   return movie.Title;
 });
@@ -208,7 +227,10 @@ console.log(soloTitoli);
 /* ESERCIZIO 12 (filter)
   Scrivi una funzione per ottenere dall'array fornito solamente i film usciti nel millennio corrente.
 */
-
+const film2000 = function (listaFilm) {
+  return (filmMillenio2000 = listaFilm.filter((film) => film.Year >= 2000));
+};
+console.log(film2000(movies));
 /* ESERCIZIO 13 (reduce)
   Scrivi una funzione per calcolare la somma di tutti gli anni in cui sono stati prodotti i film contenuti nell'array fornito.
 */
